@@ -1,0 +1,8 @@
+CREATE DATABASE aplikacja;
+
+CREATE TABLE uzytkownicy (
+idUzytkownika int(11) AUTO_INCREMENT PRIMARY KEY  NOT NULL,
+nazwaUzytkownika tinytext not null,
+emailUzytkownika tinytext not null,
+hasloUzytkownika longtext not null
+);
