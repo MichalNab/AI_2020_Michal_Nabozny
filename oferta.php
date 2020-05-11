@@ -1,7 +1,9 @@
-
+<?php
+session_start();
+?>
 <!DOCTYPE html PUBLIC
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title></title>
@@ -17,13 +19,13 @@
 	<div id="header">
 		<div id="logo">
 			<img src="images/logo.jpg" alt="" />
-			<h1><a href="index.php">Kąkuter</a></h1>
+			<h1><a href="#">Kąkuter</a></h1>
 			<span>Sklep internetowy</span>
 		</div>
 		<div id="menu">
 			<ul>
 				<li><a href="index.php" accesskey="1" title="">Strona główna</a></li>
-				<li><a href="oferta.php" accesskey="2" title="">Oferta</a></li>
+				<li class="current_page_item"><a href="oferta.php" accesskey="2" title="">Oferta</a></li>
 				<li><a href="onas.php" accesskey="3" title-="">O nas</a></li>
 				<li><a href="kontakt.php" accesskey="4" title="">Kontakt</a></li>
 				<?php
@@ -32,28 +34,41 @@
 					';
 				}
 				else{
-						echo '	<li class="current_page_item"><a href="logowanie.php" title="">Zaloguj się</a></li>
+						echo '	<li><a href="logowanie.php" title="">Zaloguj się</a></li>
 						';
 				}
 				?>
+
 			</ul>
 		</div>
 	</div>
+
 	<div id="main">
 		<div id="banner">
 			<img src="images/tlo.jpg" alt="" class="image-full" />
 		</div>
 		<div id="welcome">
 			<div class="title">
-				<h2>Logowanie</h2></br>
-				<form action="includes/login.inc.php" method="post">
-	        <input type="text"  name="mailuid" placeholder="Nazwa lub E-mail"></br></br>
-	            <input type="password"  name="pwd" placeholder="Hasło"></br></br>
-	            <button type="submit" name="login-submit">Zaloguj</button>
-	        </form>
+				<h2>Najlepsza oferta na rynku</h2>
+				<span class="byline">Nie ma takiego drugiego super sklepu</span>
 			</div>
-			<h2>Nie masz jeszcze konta?</h2>
-		<a href="rejestracja.php">Zarejestruj się</a><ul class="actions">
+			<?php
+			if(isset($_SESSION['userId'])){
+				echo '
+				<p>tu beda rozne informacje</P><br>
+							<p>tu beda rozne informacje</P><br>
+										<p>tu beda rozne informacje</P><br>
+													<p>tu beda rozne informacje</P><br>		<p>tu beda rozne informacje</P><br>
+																		<p>tu beda rozne informacje</P><br>
+																					<p>tu beda rozne informacje</P><br>
+																								<p>tu beda rozne informacje</P><br>';
+			}
+			else{
+					echo '	<p>Zaloguj się  aby widzieć zawartość</p>
+					';
+			}
+			?>
+		<ul class="actions">
 
 			</ul>
 		</div>
