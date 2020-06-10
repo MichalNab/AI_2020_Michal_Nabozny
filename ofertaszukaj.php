@@ -56,15 +56,16 @@ session_start();
 			<?php
 require 'includes/dbh.inc.php';
 	$przedmiot=$_POST['przedmiot'];
-	$wynik = mysqli_query($conn,"SELECT * FROM produkty WHERE rodzajProduktu = '$przedmiot'");
-if (mysqli_num_rows($wynik)!=0){
-	echo "<form action=ofertaszukaj.php method=post>";
-	echo "<input type=hidden name=przedmiot value=$przedmiot>";
-	echo "<input class=wyszukajOferta type=text name=nazwa placeholder='Wyszukaj przedmiot'  style=width:70%>";
-	echo "<input class=wyszukajOferta type=text name=cenaod value='Cena od' pattern='[0-9]{1,20}' style=width:15%>";
-	echo "<input class=wyszukajOferta type=text name=cenado value='Cena do' pattern='[0-9]{1,20}' style=width:15%>"."</br>";
-	echo "<button type=submit name=xd>szukaj</button>"."</br>";
+	$nazwa=$_POST['nazwa'];
+	$cenaod=$_POST['cenaod'];
+	$cenado=$_POST['cenado'];
+	if($nazwa=="Nazwa" && $cenaod=="Cena od" && $cenado=="Cena do"){
+		echo "JD";
+	}
+	else{
+	$wynik = mysqli_query($conn,"SELECT * FROM produkty WHERE rodzajProduktu = '$przedmiot' AND nazwaProduktu LIKE '%$nazwa%';");
 
+if (mysqli_num_rows($wynik)!=0){
 	while ($row = mysqli_fetch_array($wynik)) {
 
 		echo " ". $row['rodzajProduktu'] ."</br> ";
@@ -75,7 +76,7 @@ if (mysqli_num_rows($wynik)!=0){
 else{
 	echo "Brak produktu w ofercie"."</br>"."</br>";
 	echo "Przepraszamy";
-}
+}}
 	?>
 		<ul class="actions">
 
