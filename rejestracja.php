@@ -19,10 +19,10 @@
 		</div>
 		<div id="menu">
 			<ul>
-				<li ><a href="index.php" accesskey="1" title="">Strona główna</a></li>
-				<li><a href="#" accesskey="2" title="">Oferta</a></li>
-				<li><a href="#" accesskey="3" title="">O nas</a></li>
-				<li><a href="#" accesskey="4" title="">Kontakt</a></li>
+				<li><a href="index.php" accesskey="1" title="">Strona główna</a></li>
+				<li><a href="oferta.php" accesskey="2" title="">Oferta</a></li>
+				<li><a href="onas.php" accesskey="3" title-="">O nas</a></li>
+				<li><a href="kontakt.php" accesskey="4" title="">Kontakt</a></li>
 				<li class="current_page_item"><a href="logowanie.php" accesskey="5" title="">Zaloguj się</a></li>
 			</ul>
 		</div>

@@ -52,22 +52,18 @@ session_start();
 				<h2>Najlepsza oferta na rynku</h2>
 				<span class="byline">Nie ma takiego drugiego super sklepu</span>
 			</div>
+
 			<?php
-			if(isset($_SESSION['userId'])){
-				echo '
-				<p>tu beda rozne informacje</P><br>
-							<p>tu beda rozne informacje</P><br>
-										<p>tu beda rozne informacje</P><br>
-													<p>tu beda rozne informacje</P><br>		<p>tu beda rozne informacje</P><br>
-																		<p>tu beda rozne informacje</P><br>
-																					<p>tu beda rozne informacje</P><br>
-																								<p>tu beda rozne informacje</P><br>';
-			}
-			else{
-					echo '	<p>Zaloguj się  aby widzieć zawartość</p>
-					';
-			}
-			?>
+require 'includes/dbh.inc.php';
+	$wynik = mysqli_query($conn, "SELECT * FROM produkty");
+	while ($row = mysqli_fetch_array($wynik)) {
+		echo "<form action=potwierdzenie.php method=post>";
+		echo " ". $row['rodzajProduktu'] ."</br> ";
+		echo " " . $row['nazwaProduktu'] . "</br> ";
+		echo " " . $row['cenaProduktu'] . "</br> ";
+			echo " " . $row['opisProduktu'] . " </br>";
+}
+	?>
 		<ul class="actions">
 
 			</ul>

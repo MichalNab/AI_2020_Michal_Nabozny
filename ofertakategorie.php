@@ -49,20 +49,30 @@ session_start();
 		</div>
 		<div id="welcome">
 			<div class="title">
-				<h2>Oferta sklepu</h2>
-				<span class="byline">Wybierz kategorie</span>
+				<h2>Najlepsza oferta na rynku</h2>
+				<span class="byline">Nie ma takiego drugiego super sklepu</span>
 			</div>
-<form action="ofertakategorie.php" method="post">
-			<button class="buttonOferta" type="submit" name="przedmiot" value="procesor">Procesor</button>
-			<button class="buttonOferta" type="submit" name="przedmiot" value="Pamięć RAM">Pamięć RAM</button>
-			<button class="buttonOferta" type="submit" name="przedmiot" value="Płyta główna">Płyta główna</button>
-			<button class="buttonOferta" type="submit" name="przedmiot" value="Karta graficzna">Karta graficzna</button>
-			<button class="buttonOferta" type="submit" name="przedmiot" value="Monitor">Monitor</button>
-			<button class="buttonOferta" type="submit" name="przedmiot" value="Zasilacz">Zasilacz</button>
-			<button class="buttonOferta" type="submit" name="przedmiot" value="Chłodzenie">Chłodzenie</button>
-			<button class="buttonOferta" type="submit" name="przedmiot" value="Dyski twarde">Dyski twarde</button>
-</form>
-		<br>
+
+			<?php
+require 'includes/dbh.inc.php';
+	$przedmiot=$_POST['przedmiot'];
+	$wynik = mysqli_query($conn,"SELECT * FROM produkty WHERE rodzajProduktu = '$przedmiot'");
+if (mysqli_num_rows($wynik)!=0){
+	while ($row = mysqli_fetch_array($wynik)) {
+		echo "<form action=potwierdzenie.php method=post>";
+		echo " ". $row['rodzajProduktu'] ."</br> ";
+		echo " " . $row['nazwaProduktu'] . "</br> ";
+		echo " " . $row['cenaProduktu'] . "</br> ";
+			echo " " . $row['opisProduktu'] . " </br>";
+}}
+else{
+	echo "Brak produktu w ofercie"."</br>"."</br>";
+	echo "Przepraszamy";
+}
+	?>
+		<ul class="actions">
+
+			</ul>
 		</div>
 
 		<div id="copyright">
